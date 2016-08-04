@@ -14,4 +14,7 @@ VOLUME ["/etc/nginx", "/var/www/"]
 
 CMD ["nginx", "-g", "daemon off;"]
 
-RUN apt-get -y install php7.0-fpm
+RUN apt-get -y install php7.0 php7.0-fpm php7.0-mysql
+RUN apt-get install -y libcurl3 php7.0-curl php7.0-gd php7.0-mcrypt
+
+RUN apt-get install php7.0-bcmath
