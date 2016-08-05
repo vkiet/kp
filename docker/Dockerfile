@@ -26,18 +26,15 @@ RUN apt-get update \
     libpng12-dev \
     libxslt1-dev
 
-RUN apt-get -y install php7.0 php7.0-fpm php7.0-mysql
+RUN apt-get -y install php7.0-fpm php7.0-mysql
 RUN apt-get install -y libcurl3 php7.0-curl php7.0-gd php7.0-mcrypt
 
 RUN apt-get install php7.0-bcmath
-RUN apt-get install -y php7.0-curl
-RUN apt-get install -y php7.0-gd
 RUN apt-get install -y php7.0-intl
 RUN apt-get install -y php7.0-mbstring
-RUN apt-get install -y php7.0-mcrypt
-RUN apt-get install -y php7.0-mhash
-RUN apt-get install -y php7.0-openssl
-RUN apt-get install -y php7.0-pdo_mysql
+#RUN apt-get install -y php7.0-mhash
+#RUN apt-get install -y php7.0-openssl
+#RUN apt-get install -y php7.0-pdo_mysql
 RUN apt-get install -y php7.0-simplexml
 RUN apt-get install -y php7.0-soap
 RUN apt-get install -y php7.0-xml
@@ -46,4 +43,6 @@ RUN apt-get install -y php7.0-zip
 RUN apt-get install -y php7.0-json
 RUN apt-get install -y php7.0-iconv
 
-CMD ["service", "php7.0-fpm", "start"]
+ENTRYPOINT service php7.0-fpm start && bash
+
+#docker run --name ng-php -p 9999:80 -itd <images>
