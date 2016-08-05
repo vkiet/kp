@@ -14,8 +14,6 @@ EXPOSE 80 443 22 9000
 
 VOLUME ["/etc/nginx", "/var/www/"]
 
-CMD ["nginx", "-g", "daemon off;"]
-
 # PHP
 RUN apt-get update \
   && apt-get install -y \
@@ -43,6 +41,10 @@ RUN apt-get install -y php7.0-zip
 RUN apt-get install -y php7.0-json
 RUN apt-get install -y php7.0-iconv
 
-ENTRYPOINT service php7.0-fpm start && bash
+RUN apt-get install -y php7.0-dom
+
+ADD files/start.sh /docker/start.sh
+
+ENTRYPOINT sh /docker/start.sh
 
 #docker run --name ng-php -p 9999:80 -itd <images>
