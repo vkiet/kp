@@ -10,10 +10,6 @@ ADD nginx/nginx.conf /etc/nginx/nginx.conf
 ADD nginx/sites-enabled/magento.conf /etc/nginx/sites-enabled/magento
 CMD rm -r /etc/nginx/sites-enabled/default
 
-EXPOSE 80 443 22 9000
-
-VOLUME ["/etc/nginx", "/var/www/"]
-
 # PHP
 RUN apt-get update \
   && apt-get install -y \
@@ -44,6 +40,10 @@ RUN apt-get install -y php7.0-iconv
 RUN apt-get install -y php7.0-dom
 
 ADD files/start.sh /docker/start.sh
+
+EXPOSE 80 443 22 9000
+
+VOLUME ["/etc/nginx", "/var/www/"]
 
 ENTRYPOINT sh /docker/start.sh
 
