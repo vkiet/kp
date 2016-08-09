@@ -1,7 +1,5 @@
 FROM ubuntu
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update --fix-missing 
 RUN apt-get install -y vim
 RUN apt-get install -y nginx
