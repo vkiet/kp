@@ -1,0 +1,21 @@
+web:
+  image:  vkiet/nginx-php:10
+  ports:
+    - "8888:80"
+  volumes:
+    #- ~/projects/magento/conf/compose/code:/code
+    - ~/Docker_Data/magento2:/code
+    #- /home/shopspot/projects/magento/conf/compose/nginx/conf.d/site.conf:/etc/nginx/conf.d/site.conf
+    #- ~/Projects/vee.magento2/nginx/nginx.conf:/etc/nginx/nginx.conf
+  links:
+    - db
+
+db:
+  image: mysql:5.7
+  volumes:
+    - ~/Docker_Data/mysql5.7:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: magento
+    MYSQL_DATABASE: magento
+    MYSQL_USER: magento
+    MYSQL_PASSWORD: magento
