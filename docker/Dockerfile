@@ -8,6 +8,7 @@ RUN apt-get install -y nginx
 
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 ADD nginx/sites-enabled/magento.conf /etc/nginx/sites-enabled/magento
+
 CMD rm -r /etc/nginx/sites-enabled/default
 
 # PHP
