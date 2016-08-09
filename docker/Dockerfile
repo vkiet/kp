@@ -40,7 +40,7 @@ ADD files/start.sh /docker/start.sh
 
 EXPOSE 80 443 22 9000
 
-VOLUME ["/etc/nginx", "/var/www/"]
+VOLUME ["/etc/nginx", "/var/www/", "/etc/php/"]
 
 ENTRYPOINT sh /docker/start.sh
 
